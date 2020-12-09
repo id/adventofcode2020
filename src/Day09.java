@@ -1,28 +1,17 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.LongSummaryStatistics;
-import java.util.Scanner;
 
 public class Day09 {
   static final int PREAMBLE = 25;
 
-  public static void main(String[] args) {
-    Scanner scanner = null;
-    try {
-      scanner = new Scanner(new File("input/day09.txt"));
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    }
-
-    ArrayList<Long> input = new ArrayList<>();
-    while (scanner.hasNextLine()) {
-      input.add(Long.parseLong(scanner.nextLine()));
-    }
-    long target = solve1(toPrimitive(input));
-    solve2(toPrimitive(input),target);
+  public static void main(String[] args) throws Exception {
+    List<String> lines = Files.readAllLines(Paths.get("input/day09.txt"));
+    long[] input = lines.stream().mapToLong(Long::parseLong).toArray();
+    long target = solve1(input);
+    solve2(input,target);
   }
 
   static long solve1(long[] input) {
@@ -88,16 +77,5 @@ public class Day09 {
     solve1(test2);
     test2[26] = 66;
     solve1(test2);
-  }
-
-  static long[] toPrimitive(List<Long> list) {
-    long[] array = new long[list.size()];
-
-    int i = 0;
-    for (long n : list) {
-      array[i] = n;
-      i++;
-    }
-    return array;
   }
 }
