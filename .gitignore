@@ -3,3 +3,4 @@
 *.iml
 /.session
 *.beam
+/out/
