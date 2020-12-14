@@ -1,6 +1,6 @@
 -module(day12).
 
--export([part1/0, part2/0, rotate/3]).
+-export([part1/0, part2/0]).
 
 part1() ->
   {ok, Bin} = file:read_file("../input/day12.txt"),
